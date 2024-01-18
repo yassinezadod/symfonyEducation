@@ -1,0 +1,7 @@
+{{ form_start(form) }}
+<center>
+    {{ form_widget(form, {'attr': {'class': 'form-control'}}) }}<br /><br /><br /><br /><br />
+    <button class="btn btn-primary">{{ button_label|default('Save') }}</button>
+    <button href="{{ path('app_formation_index') }}" class="btn btn-secondary">back to list</button>
+ </center>
+{{ form_end(form) }}

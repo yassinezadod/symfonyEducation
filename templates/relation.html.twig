@@ -1,0 +1,51 @@
+{# templates/relation.html.twig #}
+
+{% extends 'base.html.twig' %}
+
+{% block title %}Voir les Relations{% endblock %}
+
+{% block body %}
+ <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #e3f2fd;">
+    <a class="navbar-brand" href="#"><b>Education</b></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link" href="{{ path('app_ecole_index') }}">Ecoles</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{ path('app_formation_index') }}">Formations</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link active" href="{{ path('app_relations') }}">Relations</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+<br />
+    <h1 style="text-align:center; color: #007FFF; font-family: Helvetica">Relations</h1>
+    <br />
+
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th>Ecole</th>
+                <th>Formation</th>           
+            </tr>
+        </thead>
+        <tbody>
+        {% for formation in formations %}
+            <tr>
+                <td>{{ formation.ecole.nom }}</td>
+                <td>{{ formation.titre }}</td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="2">Aucun enregistrement trouvé</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

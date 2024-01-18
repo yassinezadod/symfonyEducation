@@ -1,0 +1,74 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Ecole index{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    {# Include Bootstrap CSS #}
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+{% endblock %}
+
+{% block body %}
+   <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #e3f2fd;">
+    <a class="navbar-brand" href="#"><b>Education</b></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link active" href="{{ path('app_ecole_index') }}">Ecoles</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{ path('app_formation_index') }}">Formations</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{ path('app_relations') }}">Relations</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+<br />
+
+    <h1 style="text-align:center; color: #007FFF; font-family: Helvetica">Ecole </h1>
+    <br />
+
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th scope="row">#</th>
+                <th>Nom de école</th>
+                <th>Directeur de école</th>
+                <th>Ville</th>
+                <th>Nombre de Formations</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for ecole in ecoles %}
+                <tr>
+                    <th scope="row">{{ ecole.id }}</th>
+                    <td>{{ ecole.nom }}</td>
+                    <td>{{ ecole.directeur }}</td>
+                    <td>{{ ecole.ville }}</td>
+                    <td>{{ formationsCount[ecole.id] }}</td>
+                    <td>
+                        <a href="{{ path('app_ecole_show', {'id': ecole.id}) }}" class="btn btn-info btn-sm">show</a>
+                        <a href="{{ path('app_ecole_edit', {'id': ecole.id}) }}" class="btn btn-warning btn-sm">edit</a>
+                        {{ include('ecole/_delete_form.html.twig') }}
+                    </td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="6">no records found</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <center><a href="{{ path('app_ecole_new') }}" class="btn btn-success">Create new</a></center>
+
+    
+{% endblock %}
+

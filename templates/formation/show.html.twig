@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Formation{% endblock %}
+
+{% block body %}
+    <div class="container mt-4">
+    <h1 class="mb-4" style="text-align:center">Show Formation</h1>
+
+    <table class="table table-bordered table-striped">
+        <tbody>
+            <tr>
+                <th scope="row">Id</th>
+                <td>{{ formation.id }}</td>
+            </tr>
+            <tr>
+                <th scope="row">Titre</th>
+                <td>{{ formation.titre }}</td>
+            </tr>
+            <tr>
+                <th scope="row">Duree</th>
+                <td>{{ formation.duree }}</td>
+            </tr>
+            <tr>
+                <th scope="row">Date_debut</th>
+                <td>{{ formation.dateDebut }}</td>
+            </tr>
+        </tbody>
+    </table>
+<center>
+<a class="btn btn-warning" href="{{ path('app_formation_edit', {'id': formation.id}) }}">edit</a>
+    <a class="btn btn-secondary" href="{{ path('app_formation_index') }}">back to list</a>
+<br></br>
+    </center>
+    </div>
+{% endblock %}

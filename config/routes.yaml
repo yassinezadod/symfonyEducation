@@ -1,0 +1,10 @@
+# config/routes.yaml
+app_relations:
+    path: /relations
+    controller: App\Controller\FormationController::relations
+
+# config/routes.yaml
+app_ecole_index:
+    path: /
+    controller: App\Controller\EcoleController::index
+

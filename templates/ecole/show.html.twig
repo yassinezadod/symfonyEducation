@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Ecole{% endblock %}
+
+{% block body %}
+    <div class="container mt-4">
+        <h1 class="mb-4" style="text-align:center">Show Ecole</h1>
+
+        <table class="table table-bordered table-striped">
+            <tbody>
+                <tr>
+                    <th scope="row">Id</th>
+                    <td>{{ ecole.id }}</td>
+                </tr>
+                <tr>
+                    <th scope="row">Nom</th>
+                    <td>{{ ecole.nom }}</td>
+                </tr>
+                <tr>
+                    <th scope="row">Directeur</th>
+                    <td>{{ ecole.directeur }}</td>
+                </tr>
+                <tr>
+                    <th scope="row">Ville</th>
+                    <td>{{ ecole.ville }}</td>
+                </tr>
+            </tbody>
+        </table>
+<center>
+        <a class="btn btn-warning" href="{{ path('app_ecole_edit', {'id': ecole.id}) }}">Edit</a>
+
+        <a class="btn btn-secondary" href="{{ path('app_ecole_index') }}">Back to list</a>
+</center>
+    </div>
+{% endblock %}
